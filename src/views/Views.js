@@ -6,8 +6,19 @@ import { Header } from "../components/header"
 import { Worksheets } from "../worksheets/page"
 import { NewWorksheet } from "../worksheets/new"
 import { Worksheet } from "../worksheets/[id]"
+import { getLocalStorage } from "../library/utilities"
+import { useEffect, useState } from "react"
 
-export const Views = ({ userId }) => {
+export const Views = () => {
+    // state
+    const [userId, setUserId] = useState({})
+    // handle function to get local storage
+    const handleGetLocalStorage = () => {
+        const getId = getLocalStorage()
+        setUserId(getId)
+    }
+    // use effect
+    useEffect(() => { handleGetLocalStorage() }, [])
     return (
         <Routes>
             <Route path="/login" element={<Login />} />

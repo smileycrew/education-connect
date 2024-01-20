@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { links } from "../library/data"
-import { Logout } from "../components/logout"
+import { logout } from "../library/utilities"
 
 export const Header = () => {
 
@@ -15,7 +15,7 @@ export const Header = () => {
                             <a className="px-7 py-1" href={`${link.to}`}>{link.name}</a>
                         </li>
                     ))}
-                    <button className="active:scale-105 active:shadow-md bg-gray-300 hover:scale-110 hover:shadow-lg px-7 rounded-full">Logout</button>
+                    <button className="active:scale-105 active:shadow-md bg-gray-300 hover:scale-110 hover:shadow-lg px-7 rounded-full" onClick={() => logout(navigate)}>Logout</button>
                 </ul>
             </nav>
         </header>
