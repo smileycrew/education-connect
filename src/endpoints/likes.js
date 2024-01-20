@@ -4,7 +4,6 @@ export const getUserLikesExpandWorksheet = (userId) => {
 }
 // endpoint to delete like
 export const deleteLike = (likeToDelete) => {
-    console.log("🚀 ~ deleteLike ~ likeToDelete:", likeToDelete)
     return fetch(`${api}/${likeToDelete}`, {
         method: "DELETE"
     })

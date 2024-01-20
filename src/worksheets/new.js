@@ -4,6 +4,7 @@ import { getStudents } from "../endpoints/students"
 import { addWorksheet } from "../endpoints/worksheets"
 import { useNavigate } from "react-router-dom"
 import { getSubjects } from "../endpoints/subjects"
+import { SectionDivider } from "../components/section-divider"
 export const NewWorksheet = ({ userId }) => {
     // navigate hook
     const navigate = useNavigate()
@@ -63,10 +64,11 @@ export const NewWorksheet = ({ userId }) => {
     }, [userId])
     // component return
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex flex-col justify-center items-center">
+            <SectionDivider title="new worksheet" />
             <form className="bg-white border flex flex-col justify-center gap-5 p-5 rounded-lg shadow w-[25rem]">
                 <div className="self-center">
-                    <p className="text-3xl">new worksheet</p>
+                    {/* <p className="text-3xl">new worksheet</p> */}
                 </div>
                 <div className="flex flex-col gap-5">
                     <div className="flex flex-col gap-3">

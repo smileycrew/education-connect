@@ -1,10 +1,4 @@
 import { getUsers } from "../endpoints/users"
-
-// function will take an event, state, setter,
-export const handleInput = (event, state, setter) => {
-    setter({ ...state, [event.target.name]: event.target.value })
-}
-
 export const handleSelectInput = (event, state, setter) => {
     setter({ ...state, [event.target.name]: event.target.value * 1 })
 }
@@ -28,4 +22,9 @@ export const handleLogin = (event, login, navigate) => {
 export const getLocalStorage = () => {
     const user = localStorage.getItem("user")
     return JSON.parse(user).id
+}
+// function to log out
+export const logout = (navigate) => {
+    localStorage.removeItem("user")
+    navigate("/")
 }
