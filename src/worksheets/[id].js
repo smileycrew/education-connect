@@ -1,45 +1,43 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getWorksheet } from "../endpoints/worksheets"
-import { worksheetType } from "../library/data"
-import { getGrades } from "../endpoints/grades"
-import { getStudents } from "../endpoints/students"
 
 export const Worksheet = () => {
-
+    // hooks
     const { worksheetId } = useParams()
-
-    const [worksheet, setWorksheet] = useState(worksheetType)
-    const [grades, setGrades] = useState([])
-    const [students, setStudents] = useState([])
-
+    // state
+    const [worksheet, setWorksheet] = useState({})
+    // handle function to get worksheet
+    const handleGetWorksheet = () => getWorksheet(worksheetId).then(setWorksheet)
+    // use effect
     useEffect(() => {
-        getWorksheet(worksheetId).then(setWorksheet)
-        getGrades().then(setGrades)
-        getStudents().then(setStudents)
+        handleGetWorksheet()
     }, [worksheetId])
 
     return (
-        <>
-            <p>grade id {worksheet.gradeId}</p>
-            <select>
-                <option>choose a grade</option>
-                {grades.map((grade, index) => (
-                    <option>{grade.name}</option>
-                ))}
-            </select>
-            <p>student id {worksheet.studentId}</p>
-            <select>
-                <option>choose a student</option>
-                {students.map((student) => (
-                    <option>{student.firstName} {student.lastName}</option>
-                ))}
-            </select>
-            <p>image url {worksheet.imageUrl}</p>
-            <input defaultValue={worksheet?.imageUrl} />
-            <p>{worksheet.isComplete ? "complete" : <button>mark as complete button</button>}</p>
-            <p>{worksheet.dateComplete ? worksheet.dateComplete : "no"}</p>
-            <button>finish</button>
-        </>
+        <div className="flex justify-center items-center h-screen">
+            <section className="bg-white border flex flex-col items-center justify-center gap-5 p-5 rounded-lg shadow">
+                <div className="self-center">
+                    <p className="text-3xl">{worksheet.title}</p>
+                </div>
+                <div>
+                    <img alt="" className="h-[20rem]" src={`${worksheet.imageUrl}`} />
+                </div>
+                <div className="flex flex-col gap-5">
+                    <div className="flex gap-3">
+                        <p>grade:</p>
+                        <p>{worksheet.grade?.name}</p>
+                    </div>
+                    <div className="flex gap-3">
+                        <p>student:</p>
+                        <p>{worksheet.student?.firstName} {worksheet.student?.lastName}</p>
+                    </div>
+                    <div className="flex gap-3">
+                        <p>subject:</p>
+                        <p>{worksheet.subject?.name}</p>
+                    </div>
+                </div>
+            </section>
+        </div>
     )
 }

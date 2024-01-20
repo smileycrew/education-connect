@@ -19,5 +19,6 @@ export const deleteWorksheet = (worksheetId) => {
 }
 
 export const getWorksheet = (worksheetId) => {
-    return fetch(`${api}/${worksheetId}`).then((response) => response.json())
+    return fetch(`${api}/${worksheetId}?_expand=student&_expand=grade&_expand=subject`).then((response) => response.json())
 }
+// ?_expand=student&_expand=grade&_expand=subject
