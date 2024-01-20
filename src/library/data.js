@@ -1,7 +1,7 @@
 export const links = [
     {
         name: "Home",
-        to: "/home"
+        to: "/"
     },
     {
         name: "Students",
@@ -12,3 +12,16 @@ export const links = [
         to: "/worksheets"
     }
 ]
+
+export const worksheetType = {
+    userId: 1,
+    gradeId: 1,
+    studentId: 1,
+    imageUrl: "",
+    isComplete: false,
+    dateComplete: ""
+}
+
+export const gradeType = {
+    name: ""
+}

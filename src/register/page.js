@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { handleInput } from "../library/utilities"
-import { registerUser } from "../endpoints/userEndpoint"
+import { registerUser } from "../endpoints/users"
 import { useNavigate } from "react-router-dom"
 
 export const Register = () => {
@@ -11,6 +11,7 @@ export const Register = () => {
         firstName: "",
         lastName: "",
         email: "",
+        password: "",
         aboutMe: ""
     })
 
@@ -34,6 +35,11 @@ export const Register = () => {
                 onChange={(event) => handleInput(event, user, setUser)
                 }
                 placeholder="email" />
+            <input
+                className="border"
+                name="password"
+                onChange={(event) => handleInput(event, user, setUser)}
+                placeholder="password" />
             <button
                 type="submit"
                 className="border"
