@@ -1,18 +1,10 @@
 const api = "http://localhost:8088/worksheets"
 
 export const addWorksheet = (worksheet) => {
-    const worksheetToAdd = {
-        userId: worksheet.userId,
-        gradeId: worksheet.gradeId,
-        studentId: worksheet.studentId,
-        imageUrl: worksheet.imageUrl,
-        isComplete: worksheet.isComplete,
-        dateComplete: worksheet.dateComplete
-    }
     return fetch(api, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(worksheetToAdd)
+        body: JSON.stringify(worksheet)
     })
 }
 

@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import { getGrades } from "../endpoints/grades"
 import { getSubjects } from "../endpoints/subjects"
 
-export const WorksheetsAside = ({ worksheets, setWorksheetsToDisplay }) => {
+export const WorksheetsAside = ({ userLikesExpandWorksheet, worksheets, setWorksheetsToDisplay }) => {
   // state
-  const [grades, setGrades] = useState([]);
+  const [grades, setGrades] = useState([])
   const [subjects, setSubjects] = useState([])
   // handle function to filter worksheets by grade
   const handleFilterByGrades = (gradeId) => {
@@ -16,12 +16,20 @@ export const WorksheetsAside = ({ worksheets, setWorksheetsToDisplay }) => {
     const filteredWorksheets = worksheets.filter((worksheet) => worksheet.subjectId === subjectId)
     setWorksheetsToDisplay(filteredWorksheets)
   }
-  // handle function to get grades and subjects from database
-  const handleGetGrades = () => getGrades().then(setGrades);
+  // handle function to filter by the favorite worksheets
+  const handleFilterByFavorites = () => {
+    const filteredWorksheets = []
+    for (const userLike of userLikesExpandWorksheet) {
+      filteredWorksheets.push(userLike.worksheet)
+    }
+    setWorksheetsToDisplay(filteredWorksheets)
+  }
+  // handle function to get grades, subjects from database
+  const handleGetGrades = () => getGrades().then(setGrades)
   const handleGetSubjects = () => getSubjects().then(setSubjects)
   // use effect on mount
   useEffect(() => {
-    handleGetGrades();
+    handleGetGrades()
     handleGetSubjects()
   }, [])
   // return component
@@ -33,7 +41,7 @@ export const WorksheetsAside = ({ worksheets, setWorksheetsToDisplay }) => {
       <nav>
         <p className="text-lg">By Favorites</p>
         <div className="border-b border-gray-900/10 p-4">
-          <button className="hover:text-blue-800 hover:underline rounded text-gray-500">Favorites</button>
+          <button className="hover:text-blue-800 hover:underline rounded text-gray-500" onClick={() => handleFilterByFavorites()}>Favorites</button>
         </div>
         <p className="text-lg">By Grade</p>
         <ul className="flex flex-col gap-2 border-b border-gray-900/10 p-4">
@@ -57,5 +65,5 @@ export const WorksheetsAside = ({ worksheets, setWorksheetsToDisplay }) => {
         </ul>
       </nav>
     </aside>
-  );
-};
+  )
+} 

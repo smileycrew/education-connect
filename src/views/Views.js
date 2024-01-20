@@ -23,7 +23,7 @@ export const Views = ({ userId }) => {
                         }>
                             <Route path="worksheets">
                                 <Route index element={<Worksheets userId={userId} />} />
-                                <Route path="new" element={<NewWorksheet />} />
+                                <Route path="new" element={<NewWorksheet userId={userId} />} />
                                 <Route path=":worksheetId" element={<Worksheet />} />
                             </Route>
                         </Route>
