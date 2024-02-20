@@ -34,21 +34,21 @@ export const WorksheetsAside = ({ userLikesExpandWorksheet, worksheets, setWorks
   }, [])
   // return component
   return (
-    <aside className="flex flex-col sm:mx-5 overflow-hidden pt-5">
+    <aside className="flex flex-col mx-5 pt-5">
       <div>
         <p>Filters</p>
       </div>
       <nav>
-        <p className="text-lg">By Favorites</p>
+        {/* <p className="text-lg">By Favorites</p>
         <div className="border-b border-gray-900/10 p-4">
           <button className="hover:text-blue-800 hover:underline rounded text-gray-500" onClick={() => handleFilterByFavorites()}>Favorites</button>
-        </div>
+        </div> */}
         <p className="text-lg">By Grade</p>
         <ul className="flex flex-col gap-2 border-b border-gray-900/10 p-4">
           {grades.map((grade, index) => (
             <li key={index}>
               <button className="hover:text-blue-800 hover:underline rounded text-gray-500" onClick={() => handleFilterByGrades(grade.id)} value={grade.id}>
-                {grade.name}
+                {grade.name} grade
               </button>
             </li>
           ))}

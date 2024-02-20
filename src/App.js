@@ -7,17 +7,15 @@ import { Authorized } from "./components/authorize";
 function App() {
 
   return (
-    <div className="scroll-smooth bg-blue-100 relative">
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="*" element={
-          <Authorized>
-            <Views />
-          </Authorized>
-        } />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="*" element={
+        <Authorized>
+          <Views />
+        </Authorized>
+      } />
+    </Routes>
   );
 }
 
