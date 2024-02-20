@@ -1,23 +1,7 @@
-import { useEffect } from "react"
-import { useState } from "react"
-import { getStudents } from "../endpoints/students"
-import { getGrades } from "../endpoints/grades"
-export const StudentsList = ({ setStudent }) => {
-    const [students, setStudents] = useState([])
-    const [grades, setGrades] = useState([])
-    const handleGetStudents = () => {
-        getStudents().then(setStudents)
-    }
-    const handleGetGrades = () => {
-        getGrades().then(setGrades)
-    }
+export const StudentsList = ({ grades, setStudent, students }) => {
     const handleEditStudentButton = (student) => {
         setStudent(student)
     }
-    useEffect(() => {
-        handleGetStudents()
-        handleGetGrades()
-    }, [])
     return (
         <ul className="bg-gray-500 flex flex-col overflow-x-scroll h-[87vh]">
             {students.map((student, index) => (
