@@ -15,29 +15,44 @@ export const Worksheet = () => {
     }, [worksheetId])
 
     return (
-        <div className="flex justify-center items-center h-screen">
-            <section className="bg-white border flex flex-col items-center justify-center gap-5 p-5 rounded-lg shadow">
+        <div className="flex justify-center relative items-center">
+            <div className="flex flex-col">
                 <div className="self-center">
-                    <p className="text-3xl">{worksheet.title}</p>
+                    <h1 className="text-[4rem] text-blue-500">{worksheet.title}</h1>
                 </div>
-                <div>
-                    <img alt="" className="h-[20rem]" src={`${worksheet.imageUrl}`} />
+                <div className="flex gap-5">
+                    <div>
+                        <img className="border" src={worksheet.imageUrl} alt="" />
+                    </div>
+                    <div className="flex flex-col justify-around">
+                        <div>
+                            <div>
+                                <p>grade:</p>
+                            </div>
+                            <div className="border rounded-full">
+                                <p className="text-center">{worksheet.grade?.name}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>subject:</p>
+                            </div>
+                            <div className="border rounded-full">
+                                <p className="px-3 text-center">{worksheet.subject?.name}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>student:</p>
+                            </div>
+                            <div className="border rounded-full">
+                                <p className="px-3 text-center">{worksheet.student?.firstName} {worksheet.student?.lastName}</p>
+                            </div>
+                        </div>
+                        <div></div>
+                    </div>
                 </div>
-                <div className="flex flex-col gap-5">
-                    <div className="flex gap-3">
-                        <p>grade:</p>
-                        <p>{worksheet.grade?.name}</p>
-                    </div>
-                    <div className="flex gap-3">
-                        <p>student:</p>
-                        <p>{worksheet.student?.firstName} {worksheet.student?.lastName}</p>
-                    </div>
-                    <div className="flex gap-3">
-                        <p>subject:</p>
-                        <p>{worksheet.subject?.name}</p>
-                    </div>
-                </div>
-            </section>
+            </div>
         </div>
     )
 }

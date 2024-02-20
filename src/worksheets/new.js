@@ -5,6 +5,7 @@ import { addWorksheet } from "../endpoints/worksheets"
 import { useNavigate } from "react-router-dom"
 import { getSubjects } from "../endpoints/subjects"
 import { SectionDivider } from "../components/section-divider"
+
 export const NewWorksheet = ({ userId }) => {
     // navigate hook
     const navigate = useNavigate()
@@ -64,9 +65,11 @@ export const NewWorksheet = ({ userId }) => {
     }, [userId])
     // component return
     return (
-        <div className="flex flex-col justify-center items-center">
-            <SectionDivider title="new worksheet" />
-            <form className="bg-white border flex flex-col justify-center gap-5 p-5 rounded-lg shadow w-[25rem]">
+        <div className="bg-gray-100 flex flex-col justify-center items-center h-[87vh]">
+            <div>
+                <SectionDivider title="New Worksheet" />
+            </div>
+            <form className="bg-white border flex flex-col justify-center gap-5 p-10 rounded-lg shadow w-[25rem]">
                 <div className="self-center">
                     {/* <p className="text-3xl">new worksheet</p> */}
                 </div>
@@ -76,7 +79,8 @@ export const NewWorksheet = ({ userId }) => {
                         <select
                             className="border h-[2rem] rounded text-center w-[10rem]"
                             name="gradeId"
-                            onChange={handleFormInput}>
+                            onChange={handleFormInput}
+                        >
                             <option value={1}>choose a grade</option>
                             {grades.map((grade, index) => (
                                 <option key={index} value={grade.id}>{grade.name}</option>
@@ -88,7 +92,8 @@ export const NewWorksheet = ({ userId }) => {
                         <select
                             className="border h-[2rem] rounded text-center w-[10rem]"
                             name="studentId"
-                            onChange={handleFormInput}>
+                            onChange={handleFormInput}
+                        >
                             <option value={1}>choose a student</option>
                             {students.map((student, index) => (
                                 <option key={index} value={student.id}>{student.firstName} {student.lastName}</option>
@@ -100,7 +105,8 @@ export const NewWorksheet = ({ userId }) => {
                         <select
                             className="border h-[2rem] rounded text-center w-[10rem]"
                             name="subjectId"
-                            onChange={handleFormInput}>
+                            onChange={handleFormInput}
+                        >
                             <option value={1}>choose a subject</option>
                             {subjects.map((subject, index) => (
                                 <option key={index} value={subject.id}>{subject.name}</option>
@@ -114,7 +120,8 @@ export const NewWorksheet = ({ userId }) => {
                             name="title"
                             onChange={handleFormInput}
                             placeholder="enter worksheet title"
-                            required />
+                            required
+                        />
                     </div>
                     <div className="flex flex-col gap-3">
                         <p>enter image url:</p>
@@ -123,12 +130,14 @@ export const NewWorksheet = ({ userId }) => {
                             name="imageUrl"
                             onChange={handleFormInput}
                             placeholder="enter image url"
-                            required />
+                            required
+                        />
                     </div>
                     <div className="flex flex-col gap-3">
                         <button
                             className="bg-blue-500 h-[2rem] hover:bg-blue-400 rounded text-white w-full"
-                            onClick={handleAddWorksheet}>
+                            onClick={handleAddWorksheet}
+                        >
                             finish
                         </button>
                     </div>
